@@ -1,0 +1,16 @@
+import re
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        
+        lst = s.split(" ")
+        ans = [None]*len(lst)
+
+        for i in range(len(lst)):
+            x=str(lst[i])
+            temp=re.split('(\d+)',x)
+           
+            ans[int(temp[1])-1]= str(temp[0])
+            print(ans)
+        return " ".join(ans)
+        
+       
