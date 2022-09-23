@@ -1,0 +1,23 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        ope = "[{("
+        clo = "]})"
+        dummy = []
+        for i in s:
+            if i in ope:
+                dummy.insert(0,i)
+            elif i == "}" and dummy and  dummy[0]== "{":
+                dummy.pop(0)
+            elif i == "]" and dummy and dummy[0]=="[":
+                dummy.pop(0)
+            elif i == ")" and dummy and dummy[0]=="(":
+                dummy.pop(0)
+            elif i in clo and not dummy:
+                return False
+            elif i in clo and dummy and i not in dummy:
+                return False
+        if len(dummy)==0:
+            return True
+        else:
+            return False
+                                           
