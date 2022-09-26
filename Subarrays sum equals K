@@ -1,0 +1,11 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        sub = 0
+        temp = 0
+        dict = {0:1}
+        for i in nums:
+            temp += i
+            difference = temp - k
+            sub += dict.get(difference, 0)
+            dict[temp] = 1 + dict.get(temp,0)
+        return sub
