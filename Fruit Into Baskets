@@ -1,0 +1,26 @@
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        fruit = set()
+        j = 0
+        maxim = 0
+        for i in range(len(fruits)):
+            if fruits[i] not in fruit:
+                fruit.add(fruits[i])
+            if len(fruit) > 2:
+                maxim = max(maxim, i-j)
+                
+                x = fruits[j]
+                if x in fruit:
+                    fruit.remove(x)
+                k = i -1
+                while fruits[k-1] == fruits[i-1]:
+                    k -= 1
+                while j < k:
+                    j += 1
+                    if fruits[j] in fruit:
+                        fruit.remove(fruits[j])
+                if fruits[j] not in fruit:
+                    fruit.add(fruits[j])
+        maxim = max(maxim, i-j+1)     
+            
+        return maxim
