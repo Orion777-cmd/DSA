@@ -1,0 +1,22 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = []
+        j = 0
+        i = 0
+        while i < len(nums1):
+            j = nums2.index(nums1[i])
+            temp = nums2[j]
+            
+            while j < len(nums2)-1:
+                if nums2[j+1] <= temp:
+                    j += 1
+                else:
+                    res.append(nums2[j+1])
+                    break
+            if not i+1 == len(res):
+                res.append(-1)
+            i += 1
+        return res
+        
+        
+            
