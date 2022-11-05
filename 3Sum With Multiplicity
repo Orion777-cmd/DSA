@@ -1,0 +1,19 @@
+class Solution:
+    def threeSumMulti(self, arr: List[int], target: int) -> int:
+        res = 0
+        mod =1000000007
+        lis = [0] * 101
+        for i in arr:
+            lis[i] += 1
+        for j in range(101):
+            for k in range(j,101):
+                m = target - j - k
+                if m < 0 or m > 100: continue
+                if j == k and k == m:
+                    res += (lis[j] * (lis[j]-1) * (lis[j]-2)) / 6
+                elif j == k and k != m:
+                    res += ((lis[j] * (lis[j]-1))/2) * lis[m]
+                elif j < k and k < m:
+                    res += lis[j] * lis[k] * lis[m]
+        return int(res%mod)
+                 
