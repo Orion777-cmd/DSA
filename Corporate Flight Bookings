@@ -1,0 +1,9 @@
+class Solution:
+    def corpFlightBookings(self, bookings: List[List[int]], n: int) -> List[int]:
+        lis = [0]* (n+1)
+        for start , end , seat in bookings:
+            
+            lis[start] += seat
+            if end < n:
+                lis[end+1] -= seat
+        return accumulate(lis[1:])
